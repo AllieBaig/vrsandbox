@@ -2,10 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RL Hybrid Sandbox</title>
-
-  <!-- Load Three.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+  <title>RL Hybrid Sandbox ES Module</title>
 
   <style>
     body { margin: 0; overflow: hidden; }
@@ -21,37 +18,16 @@
     #leftBtn { left: 20px; }
     #rightBtn { left: 120px; }
     #sitBtn { left: 220px; }
-    #errorMessage {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(255,0,0,0.9); color: white; padding: 20px;
-      font-size: 20px; font-weight: bold; display: none;
-      z-index: 999;
-    }
   </style>
 </head>
 <body>
 
-  <div id="errorMessage">❌ Error loading Three.js. Check internet or file paths!</div>
-
-  <button id="exportButton" onclick="exportEpisodes()">Export Episodes</button>
+  <button id="exportButton">Export</button>
   <button id="leftBtn" class="control-btn">&#8592;</button>
   <button id="rightBtn" class="control-btn">&#8594;</button>
   <button id="sitBtn" class="control-btn">Sit</button>
 
-  <script>
-    // Check after window load if THREE is defined
-    window.onload = function() {
-      if (typeof THREE === 'undefined') {
-        document.getElementById("errorMessage").style.display = 'block';
-      } else {
-        // Load main.js only if Three.js is available
-        const script = document.createElement("script");
-        script.src = "main.js";
-        document.body.appendChild(script);
-      }
-    };
-  </script>
+  <script type="module" src="js/main.js"></script>
 
 </body>
 </html>
