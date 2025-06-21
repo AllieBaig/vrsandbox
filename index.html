@@ -4,50 +4,54 @@
   <meta charset="UTF-8">
   <title>RL Hybrid Sandbox</title>
 
-  <!-- Load Three.js BEFORE your script -->
+  <!-- Load Three.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
 
   <style>
     body { margin: 0; overflow: hidden; }
     canvas { display: block; }
-
     #exportButton {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      z-index: 10;
-      padding: 10px;
-      background: white;
-      border: 1px solid black;
-      font-weight: bold;
+      position: absolute; top: 10px; left: 10px; z-index: 10;
+      padding: 10px; background: white; border: 1px solid black; font-weight: bold;
     }
-
     .control-btn {
-      position: absolute;
-      bottom: 20px;
-      width: 80px;
-      height: 80px;
-      font-size: 24px;
-      border: 2px solid black;
-      background: white;
-      border-radius: 50%;
-      z-index: 10;
+      position: absolute; bottom: 20px; width: 80px; height: 80px;
+      font-size: 24px; border: 2px solid black; background: white; border-radius: 50%; z-index: 10;
     }
-
     #leftBtn { left: 20px; }
     #rightBtn { left: 120px; }
     #sitBtn { left: 220px; }
+    #errorMessage {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,0,0,0.9); color: white; padding: 20px;
+      font-size: 20px; font-weight: bold; display: none;
+      z-index: 999;
+    }
   </style>
 </head>
 <body>
+
+  <div id="errorMessage">❌ Error loading Three.js. Check internet or file paths!</div>
 
   <button id="exportButton" onclick="exportEpisodes()">Export Episodes</button>
   <button id="leftBtn" class="control-btn">&#8592;</button>
   <button id="rightBtn" class="control-btn">&#8594;</button>
   <button id="sitBtn" class="control-btn">Sit</button>
 
-  <!-- Now load your own JS after Three.js -->
-  <script src="main.js"></script>
+  <script>
+    // Check after window load if THREE is defined
+    window.onload = function() {
+      if (typeof THREE === 'undefined') {
+        document.getElementById("errorMessage").style.display = 'block';
+      } else {
+        // Load main.js only if Three.js is available
+        const script = document.createElement("script");
+        script.src = "main.js";
+        document.body.appendChild(script);
+      }
+    };
+  </script>
 
 </body>
 </html>
