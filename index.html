@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RL Recorder Sandbox</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    canvas { display: block; }
+
+    #exportButton {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+      padding: 10px;
+      background: white;
+      border: 1px solid black;
+      font-weight: bold;
+    }
+
+    /* Touch control buttons */
+    .control-btn {
+      position: absolute;
+      bottom: 20px;
+      width: 80px;
+      height: 80px;
+      font-size: 24px;
+      border: 2px solid black;
+      background: white;
+      border-radius: 50%;
+      z-index: 10;
+    }
+
+    #leftBtn { left: 20px; }
+    #rightBtn { left: 120px; }
+  </style>
+</head>
+<body>
+  <button id="exportButton" onclick="exportEpisodes()">Export Episodes</button>
+  <button id="leftBtn" class="control-btn">&#8592;</button>
+  <button id="rightBtn" class="control-btn">&#8594;</button>
+
+  <script src="main.js"></script>
+</body>
+</html>
